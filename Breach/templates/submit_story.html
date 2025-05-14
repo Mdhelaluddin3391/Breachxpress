@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}Submit Story - BreachXpress{% endblock %}
+{% block meta_description %}Submit your story anonymously to BreachXpress to expose corruption and drive change.{% endblock %}
+{% block meta_keywords %}submit story, BreachXpress, whistleblower, corruption{% endblock %}
+{% block og_title %}Submit Story - BreachXpress{% endblock %}
+{% block og_description %}Share your story with BreachXpress to uncover corruption and promote transparency.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/submit-story-og-image.jpg' %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/submit_story.css' %}">
+    {{ form.media }}
+{% endblock %}
+{% block content %}
+<div class="submit-story-container">
+    <h1>Submit Your Story</h1>
+    <p class="intro-text">Share your story anonymously to expose corruption.</p>
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% if 'green-message' in message.extra_tags %}
+                    <div class="success-message">
+                        <p>{{ message }}</p>
+                    </div>
+                {% elif 'error-message' in message.extra_tags %}
+                    <div class="error-message">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <form method="post" class="submit-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Story Title</label>
+            {{ form.title }}
+            {% if form.title.errors %}
+                <div class="error-message">{{ form.title.errors.as_text }}</div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.summary.id_for_label }}">Article Summary</label>
+            {{ form.summary }}
+            {% if form.summary.errors %}
+                <div class="error-message">{{ form.summary.errors.as_text }}</div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.story.id_for_label }}">Story</label>
+            {{ form.story }}
+            {% if form.story.errors %}
+                <div class="error-message">{{ form.story.errors.as_text }}</div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.evidence.id_for_label }}">Upload Evidence (Optional)</label>
+            {{ form.evidence }}
+            {% if form.evidence.errors %}
+                <div class="error-message">{{ form.evidence.errors.as_text }}</div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.category.id_for_label }}">Category</label>
+            {{ form.category }}
+            {% if form.category.errors %}
+                <div class="error-message">{{ form.category.errors.as_text }}</div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.tags.id_for_label }}">Tags</label>
+            {{ form.tags }}
+            {% if form.tags.errors %}
+                <div class="error-message">{{ form.tags.errors.as_text }}</div>
+            {% endif %}
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,175 @@
+/* static/css/home.css */
+.content {
+    flex: 1 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff; /* White background for content */
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 40px 20px; /* Reduced from 60px */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: #fff;
+    z-index: 1;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* Full viewport width */
+    margin: 0; /* No margins */
+    left: 0; /* Align to left edge */
+    margin-top: 0; /* Stick below navbar */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #a00;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #800;
+}
+
+/* Content Styles */
+.content h1 {
+    font-size: 32px;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 28px;
+    color: #000;
+    margin: 30px 0 15px;
+    text-align: center;
+}
+
+/* Reduce margin-top for "Join Our Community" heading */
+.content h2:last-of-type {
+    margin-top: 20px; /* Reduced from 30px */
+}
+
+.content p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Exposé Preview Section */
+.expose-preview {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.expose-preview h3 {
+    font-size: 24px;
+    color: #a00;
+    margin-bottom: 15px;
+    overflow-wrap: anywhere;
+    overflow: hidden
+}
+
+.expose-preview p {
+    font-size: 16px;
+    color: #333;
+    overflow-wrap: anywhere;
+    overflow: hidden
+}
+
+.expose-preview a {
+    color: #a00;
+    text-decoration: none;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+    overflow: hidden
+}
+
+.expose-preview a:hover {
+    text-decoration: underline;
+}
+
+/* Community Section */
+.community-section {
+    text-align: center;
+    padding: 20px 20px; /* Reduced padding-top */
+    background-color: #fff;
+}
+
+.community-section p {
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .content h1, .hero h2 {
+        font-size: 24px;
+    }
+
+    .content h2, .expose-preview h3 {
+        font-size: 20px;
+    }
+
+    .hero p, .expose-preview p {
+        font-size: 16px;
+    }
+
+    .hero {
+        padding: 30px 20px; /* Reduced for mobile */
+        min-height: 250px;
+    }
+
+    .content h2:last-of-type {
+        margin-top: 15px; /* Reduced for mobile */
+    }
+
+    .community-section {
+        padding: 15px 20px; /* Reduced for mobile */
+    }
+}

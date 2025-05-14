@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}Exposés - BreachXpress{% endblock %}
+{% block meta_description %}Discover BreachXpress's investigative exposés uncovering corruption and injustice worldwide.{% endblock %}
+{% block meta_keywords %}exposés, corruption, investigative journalism, BreachXpress{% endblock %}
+{% block og_title %}BreachXpress Exposés{% endblock %}
+{% block og_description %}Explore BreachXpress's hard-hitting exposés on corruption and injustice.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/exposes-og-image.jpg' %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/exposes.css' %}">
+{% endblock %}
+{% block content %}
+<section class="hero" style="background-image: url('{% static 'images/hero.jpg' %}');">
+    <div class="hero-content">
+        {% if quote %}
+            <h1>"{{ quote.text }}"</h1>
+            <p>{% if quote.author %}- {{ quote.author }}{% else %}Unknown{% endif %}</p>
+        {% else %}
+            <h1>No Quote Set</h1>
+            <p>Add a quote in the admin panel.</p>
+        {% endif %}
+    </div>
+</section>
+{% if featured_expose %}
+<section class="featured-expose">
+    <h2>Featured Story</h2>
+    <div class="news-card">
+        <div class="news-card-content">
+            <h3><a href="{% url 'article_detail' slug=featured_expose.slug %}">{{ featured_expose.title }}</a></h3>
+            <p>{{ featured_expose.summary|truncatewords:30 }}</p>
+        </div>
+    </div>
+</section>
+{% endif %}
+<section class="news-section">
+    <h2>Our Exposes</h2>
+    <div class="news-grid">
+        {% for article in exposes %}
+        <div class="news-card">
+            <div class="news-card-content">
+                <h3><a href="{% url 'article_detail' slug=article.slug %}">{{ article.title }}</a></h3>
+                <p>{{ article.summary|truncatewords:30 }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No articles available.</p>
+        {% endfor %}
+    </div>
+    {% if exposes %}
+    <div class="pagination">
+        {% if exposes.has_previous %}
+            <a href="?page={{ exposes.previous_page_number }}">Previous</a>
+        {% else %}
+            <a href="#" class="disabled">Previous</a>
+        {% endif %}
+        {% for num in exposes.paginator.page_range %}
+            {% if exposes.number == num %}
+                <span class="current">{{ num }}</span>
+            {% else %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if exposes.has_next %}
+            <a href="?page={{ exposes.next_page_number }}">Next</a>
+        {% else %}
+            <a href="#" class="disabled">Next</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</section>
+<!-- Schema Markup for Collection Page -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "BreachXpress Exposés",
+    "url": "{{ request.build_absolute_uri }}",
+    "description": "Discover BreachXpress's investigative exposés uncovering corruption and injustice worldwide."
+}
+</script>
+{% endblock %}

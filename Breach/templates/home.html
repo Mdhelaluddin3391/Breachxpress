@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}{{ site_metadata.site_name|default:"BreachXpress" }} - Home{% endblock %}
+{% block meta_description %}BreachXpress: Exposing corruption through investigative journalism and community-driven stories. Join the movement for justice.{% endblock %}
+{% block meta_keywords %}BreachXpress, corruption exposure, investigative journalism, whistleblowers{% endblock %}
+{% block og_title %}BreachXpress - Home{% endblock %}
+{% block og_description %}Join BreachXpress to expose corruption and support investigative journalism.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/home-og-image.jpg' %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+<section class="hero" style="background-image: url('{% static 'images/hero.jpg' %}');">
+    <h2>{{ hero_section.title|default:"Welcome to BreachXpress" }}</h2>
+    <p>{{ hero_section.description|default:"Join us in exposing corruption and empowering whistleblowers. Share your story and be part of a movement for justice." }}</p>
+    <a href="{{ hero_section.cta_link|default:'submit-story' }}" class="cta-button">{{ hero_section.cta_text|default:"Submit Your Story" }}</a>
+</section>
+<div class="content">
+    <h1>{{ mission_section.title|default:"Our Mission" }}</h1>
+    <p>{{ mission_section.description|default:"BreachXpress is dedicated to uncovering the truth and holding the powerful accountable. We provide a platform for whistleblowers to share their stories safely and for investigative journalists to publish hard-hitting exposés. Our mission is to foster transparency and drive change through truth." }}</p>
+    <h2>{{ expose_section.title|default:"Featured Exposé" }}</h2>
+    {% if featured_expose %}
+    <div class="expose-preview">
+        <h3>{{ featured_expose.title }}</h3>
+        <p>{{ featured_expose.summary|truncatewords:50 }}</p>
+        <p><a href="{{ featured_expose.get_absolute_url }}">Read the Full Story</a></p>
+    </div>
+    {% else %}
+    <div class="expose-preview">
+        <h3>No Exposé Available</h3>
+        <p>Check back soon for our latest investigations.</p>
+    </div>
+    {% endif %}
+    <h2>{{ truth_section.title|default:"Why Truth Matters" }}</h2>
+    <p>{{ truth_section.description|default:"In a world filled with misinformation, BreachXpress stands as a beacon of accountability. Every story shared here has the power to spark change, from local communities to global institutions. Our rigorous verification process ensures that every exposé is credible and impactful." }}</p>
+    <h2>{{ community_section.title|default:"Join Our Community" }}</h2>
+    <div class="community-section">
+        <p>{{ community_section.description|default:"Become a part of the BreachXpress community. Share your insights, discuss exposés, and connect with others who care about justice. Together, we can amplify the truth." }}</p>
+        <a href="{{ community_section.cta_link|default:'community' }}" class="cta-button">{{ community_section.cta_text|default:"Join Now" }}</a>
+    </div>
+</div>
+{% endblock %}

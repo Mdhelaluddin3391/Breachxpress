@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}About BreachXpress - Uncovering Truth, Empowering Justice{% endblock %}
+{% block meta_description %}Discover BreachXpress, a bold platform dedicated to exposing corruption, protecting whistleblowers, and driving global change through investigative journalism.{% endblock %}
+{% block meta_keywords %}BreachXpress, investigative journalism, corruption exposure, whistleblower protection, transparency{% endblock %}
+{% block og_title %}About BreachXpress{% endblock %}
+{% block og_description %}Join BreachXpress in the fight against corruption. Learn how we empower whistleblowers and uncover truth through fearless journalism.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/about-og-image.jpg' %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+    <!-- JavaScript for FAQ accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    answer.classList.toggle('active');
+                    question.setAttribute('aria-expanded', answer.classList.contains('active'));
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero section -->
+<section class="hero-section" role="banner">
+    <h1>About BreachXpress</h1>
+    <p class="tagline">"Unveiling Truth, Igniting Justice"</p>
+</section>
+
+<div class="content">
+    <div class="about-section" role="main">
+        <p>
+            {{ about_content.intro_paragraph|default:"BreachXpress is a relentless force against corruption, a sanctuary for whistleblowers, and a beacon of truth in a world clouded by deceit. Founded in 2025, we harness investigative journalism and community power to expose corruption, hold the powerful accountable, and drive systemic change. Our platform is built on trust, anonymity, and an unwavering commitment to justice." }}
+        </p>
+        <p class="mission">
+            {{ about_content.mission_statement|default:"Our mission is to uncover hidden truths, protect those who speak out, and empower communities to demand transparency. We dig deeper, fight harder, and shine brighter—so justice prevails." }}
+        </p>
+        <p>
+            {{ about_content.second_paragraph|default:"From local scandals to global conspiracies, our team of fearless journalists and truth-seekers investigates with precision and courage. We rely on our global community—whistleblowers, activists, and everyday citizens—to share stories and evidence that fuel our exposés. Together, we’re building a movement that corruption cannot silence." }}
+        </p>
+
+        <!-- Impact section -->
+        <section class="impact-section" aria-labelledby="impact-heading">
+            <h2 id="impact-heading">Our Impact</h2>
+            <p>Through rigorous investigations and fearless reporting, BreachXpress has sparked change worldwide. Here are some ways our community has made a difference:</p>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <h3>Exposing Corporate Fraud</h3>
+                    <p>A whistleblower’s tip led to a BreachXpress exposé that uncovered financial misconduct, resulting in regulatory action and corporate reform.</p>
+                </div>
+                <div class="impact-card">
+                    <h3>Empowering Local Communities</h3>
+                    <p>Our investigation into local government corruption empowered citizens to demand accountability, leading to policy changes.</p>
+                </div>
+                <div class="impact-card">
+                    <h3>Protecting Whistleblowers</h3>
+                    <p>Our secure, anonymous submission system has safeguarded countless whistleblowers, giving them a voice without fear of retaliation.</p>
+                </div>
+            </div>
+        </section>
+
+        <h2>How We Work</h2>
+        <ul class="process-list" role="list">
+            <li><strong>{{ about_content.process_step_1|default:"Community-Driven Leads: Our investigations begin with tips from whistleblowers and truth-seekers worldwide, shared securely through our anonymous submission platform." }}</strong></li>
+            <li><strong>{{ about_content.process_step_2|default:"In-Depth Investigation: Our journalists dive into evidence, conduct interviews, and analyze data to build airtight cases against corruption." }}</strong></li>
+            <li><strong>{{ about_content.process_step_3|default:"Rigorous Verification: Every fact is cross-checked with multiple sources to ensure our exposés are credible, accurate, and impactful." }}</strong></li>
+            <li><strong>{{ about_content.process_step_4|default:"Global Publication: We publish compelling stories to spark dialogue, demand accountability, and inspire action across borders." }}</strong></li>
+        </ul>
+
+        <!-- Team/community spotlight -->
+        <section class="team-section" aria-labelledby="team-heading">
+            <h2 id="team-heading">Our Community of Truth-Seekers</h2>
+            <p>At BreachXpress, our strength lies in our global community—whistleblowers, journalists, activists, and citizens united by a passion for justice. While we protect the anonymity of our contributors, their courage fuels our mission. Join us to become part of this unstoppable movement.</p>
+            <img src="{% static 'images/community.jpg' %}" alt="BreachXpress community collaborating for justice" loading="lazy">
+        </section>
+
+        <div class="movement-section" aria-labelledby="movement-heading">
+            <h2 id="movement-heading">Join the Movement</h2>
+            <p>
+                {{ about_content.movement_paragraph|default:"Corruption thrives in silence, but BreachXpress breaks that silence. Join our global movement to expose wrongdoing, protect the vulnerable, and build a transparent world. Share your story, amplify our exposés, or connect with our community—every action counts. Together, we are the voice of justice." }}
+            </p>
+            <div class="cta-buttons">
+                <a href="{% url 'submit_story' %}" class="cta-button" role="button">Submit a Story</a>
+                <a href="{% url 'community' %}" class="cta-button" role="button">Join Our Community</a>
+                <a href="{% url 'contact' %}" class="cta-button" role="button">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- FAQ section -->
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <p class="faq-question" role="button" aria-expanded="false">How does BreachXpress protect whistleblowers?</p>
+                <div class="faq-answer">
+                    <p>We prioritize anonymity with secure submission systems, encrypted storage, and metadata removal. While we strive to protect your identity, legal obligations may apply. See our <a href="{% url 'privacy' %}">Privacy Policy</a> for details.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <p class="faq-question" role="button" aria-expanded="false">What types of stories can I submit?</p>
+                <div class="faq-answer">
+                    <p>We welcome stories about corruption, injustice, or misconduct, supported by evidence like documents or photos. Submissions are reviewed for accuracy and impact.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <p class="faq-question" role="button" aria-expanded="false">How can I join the BreachXpress community?</p>
+                <div class="faq-answer">
+                    <p>Visit our <a href="{% url 'community' %}">Community page</a> to engage with truth-seekers, share insights, and amplify our exposés.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site_metadata.site_name|default:'BreachXpress' }}",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/breachxpress-logo.png' %}",
+    "description": "BreachXpress is a platform dedicated to exposing corruption, protecting whistleblowers, and empowering communities through investigative journalism.",
+    "sameAs": [
+        "{{ site_metadata.facebook_url|default:'https://www.facebook.com/breachxpress' }}",
+        "{{ site_metadata.twitter_url|default:'https://twitter.com/breachxpress' }}",
+        "{{ site_metadata.instagram_url|default:'https://www.instagram.com/breachxpress' }}",
+        "{{ site_metadata.linkedin_url|default:'https://www.linkedin.com/company/breachxpress' }}"
+    ]
+}
+</script>
+{% endblock %}

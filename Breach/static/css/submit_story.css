@@ -1,0 +1,177 @@
+/* Container for the entire page */
+.submit-story-container {
+    max-width: 1400px; /* Increased further for even wider PC layout */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Centered h1 with spooky color */
+.submit-story-container h1 {
+    text-align: center;
+    color: #8B0000; /* Deep Blood Red for a bold, intense look */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Subtle shadow for spooky effect */
+}
+
+/* Intro text styling */
+.intro-text {
+    font-size: 18px;
+    color: #444;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Form container styling */
+.submit-form {
+    max-width: 1200px; /* Increased to make form fields wider on PC */
+    margin: 0 auto; /* Center the form */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Input, textarea, and select styling */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* CKEditor widget styling */
+.form-group .django-ckeditor-widget {
+    width: 100%;
+}
+
+/* Specific styling for CKEditor story field */
+.form-group #id_story {
+    height: 400px; /* Height for CKEditor textarea before it becomes an editor */
+    resize: vertical;
+}
+
+/* Ensure CKEditor iframe fits the form */
+.form-group .cke_chrome {
+    border: 1px solid #ccc !important;
+    border-radius: 5px !important;
+    box-shadow: none !important;
+}
+
+/* Specific styling for summary field */
+.form-group textarea#id_summary {
+    height: 100px; /* Smaller height for summary */
+    resize: vertical;
+}
+
+/* File input styling */
+.form-group input[type="file"] {
+    padding: 5px; /* Adjusted for file input */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Category select styling */
+.form-group select#id_category {
+    height: 40px; /* Consistent height with inputs */
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Tags input styling */
+.form-group input#id_tags {
+    height: 40px; /* Consistent height with inputs */
+}
+
+/* Submit button styling */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #a00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #700;
+}
+
+/* Success and error message styling */
+.message-container {
+    max-width: 1200px; /* Match the wider form width on PC */
+    margin: 0 auto 20px;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Reduced for field-specific errors */
+    font-size: 14px; /* Slightly smaller for field-specific errors */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .submit-story-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .submit-form {
+        max-width: 100%; /* Full width on mobile, as seen in screenshot */
+        padding: 15px;
+    }
+
+    .message-container {
+        max-width: 100%; /* Match form width on mobile */
+    }
+
+    .form-group #id_story {
+        height: 300px; /* Smaller height for CKEditor on mobile */
+    }
+
+    .form-group select#id_category,
+    .form-group input#id_tags {
+        font-size: 14px; /* Slightly smaller on mobile */
+    }
+
+    .intro-text {
+        font-size: 16px; /* Slightly smaller for mobile */
+    }
+
+    .submit-story-container h1 {
+        font-size: 24px; /* Smaller h1 on mobile */
+    }
+}

@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}{{ expose.title }} - BreachXpress{% endblock %}
+{% block meta_description %}{{ expose.summary|truncatewords:30 }}{% endblock %}
+{% block meta_keywords %}{{ expose.tags.all|join:", " }}, corruption, breachxpress{% endblock %}
+{% block og_title %}{{ expose.title }}{% endblock %}
+{% block og_description %}{{ expose.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{{ expose.feature_image.url|default:'/static/images/feature-image.jpg' }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/article_detail.css' %}">
+{% endblock %}
+{% block content %}
+<div class="content">
+    <article class="article">
+        <div class="news-tag">{{ expose.tags.first.name|default:"Uncategorized" }}</div>
+        <h1 class="article-title">{{ expose.title }}</h1>
+        <div class="metadata">
+            <span>By {{ expose.author|default:"Anonymous" }}</span>
+            <span>Published: {{ expose.published_date|date:"F d, Y" }}</span>
+            <span>{{ expose.reading_time }}</span>
+        </div>
+        <img class="feature-image" src="{{ expose.feature_image.url|default:'/static/images/feature-image.jpg' }}" alt="{{ expose.title }} Feature Image" loading="lazy">
+        <div class="article-body">
+            {{ expose.content|safe }}
+        </div>
+        {% if expose.evidence %}
+        <a href="{{ expose.evidence.url }}" class="download-evidence">Download Evidence</a>
+        {% else %}
+        <p>No evidence available.</p>
+        {% endif %}
+    </article>
+    <div class="related-exposes">
+        <h2>Recent Exposés</h2>
+        <ul>
+            {% for expose in related_exposes %}
+            <li>
+                <a href="{{ expose.get_absolute_url }}">{{ expose.title }}</a>
+                <div class="expose-meta">
+                    <span class="expose-tag">{{ expose.tags.first.name|default:"Uncategorized" }}</span>
+                    <span>By {{ expose.author|default:"Anonymous" }}</span>
+                </div>
+                <div class="metadata">
+                    <span>Published: {{ expose.published_date|date:"F d, Y" }}</span>
+                    <span>{{ expose.reading_time }}</span>
+                </div>
+                <div class="summary">
+                    {{ expose.summary|truncatewords:15 }}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- Schema Markup for Article -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "{{ expose.title }}",
+    "image": "{{ expose.feature_image.url|default:'/static/images/feature-image.jpg' }}",
+    "datePublished": "{{ expose.published_date|date:'c' }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ expose.author|default:'Anonymous' }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site_metadata.site_name|default:'BreachXpress' }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.png' %}"
+        }
+    },
+    "description": "{{ expose.summary|truncatewords:30 }}"
+}
+</script>
+{% endblock %}

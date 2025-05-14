@@ -1,0 +1,205 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}Community - BreachXpress{% endblock %}
+{% block meta_description %}Join the BreachXpress community to connect, share, and engage in the fight against corruption.{% endblock %}
+{% block meta_keywords %}breachxpress community, anti-corruption, whistleblowers{% endblock %}
+{% block og_title %}BreachXpress Community{% endblock %}
+{% block og_description %}Be part of BreachXpress's global community dedicated to exposing corruption and fostering transparency.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/community-og-image.jpg' %}{% endblock %}
+
+{% block extra_css %}
+    <style>
+        /* Existing inline CSS remains unchanged */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .under-development-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+        .under-development-container {
+            max-width: 800px;
+            width: 80vw;
+            min-height: 80vh;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .under-development-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .under-development-icon {
+            font-size: 56px;
+            color: #a00;
+            margin-bottom: 25px;
+            transition: color 0.3s ease;
+        }
+        .under-development-title {
+            font-size: 32px;
+            color: #000;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .under-development-message {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .under-development-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #a00;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .under-development-button:hover {
+            background-color: #c00;
+            transform: scale(1.05);
+        }
+        @media screen and (min-width: 1200px) {
+            .under-development-container {
+                max-width: 900px;
+                width: 70vw;
+                padding: 50px;
+            }
+            .under-development-icon {
+                font-size: 60px;
+            }
+            .under-development-title {
+                font-size: 36px;
+            }
+            .under-development-message {
+                font-size: 20px;
+            }
+            .under-development-button {
+                padding: 14px 28px;
+                font-size: 18px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .under-development-container {
+                width: 90vw;
+                min-height: 70vh;
+                padding: 30px;
+                border-radius: 10px;
+            }
+            .under-development-icon {
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
+            .under-development-title {
+                font-size: 26px;
+            }
+            .under-development-message {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .under-development-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .under-development-wrapper {
+                padding: 0;
+            }
+            .under-development-container {
+                width: 100%;
+                min-height: 100vh;
+                padding: 20px;
+                border-radius: 0;
+                box-shadow: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .under-development-icon {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+            .under-development-title {
+                font-size: 22px;
+            }
+            .under-development-message {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            .under-development-button {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+        }
+        @media screen and (max-width: 360px) {
+            .under-development-container {
+                padding: 15px;
+            }
+            .under-development-icon {
+                font-size: 28px;
+            }
+            .under-development-title {
+                font-size: 20px;
+            }
+            .under-development-message {
+                font-size: 12px;
+            }
+            .under-development-button {
+                padding: 7px 14px;
+                font-size: 12px;
+            }
+        }
+        .progress-bar {
+            width: 80%;
+            height: 12px;
+            background: #fff;
+            border-radius: 6px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .progress {
+            width: 75%;
+            height: 100%;
+            background: #e60000;
+            border-radius: 6px;
+            animation: progress 2s ease-in-out infinite;
+        }
+        @keyframes progress {
+            0% { width: 60%; }
+            50% { width: 90%; }
+            100% { width: 60%; }
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<div class="under-development-wrapper">
+    <div class="under-development-container">
+        <i class="fas fa-tools under-development-icon"></i>
+        <h1 class="under-development-title">Page Under Development</h1>
+        <p class="under-development-message">
+            Our community page is currently being built. We're working hard to bring you an amazing space to connect, share, and engage. 
+            Stay tuned—it'll be live very soon!
+        </p>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <a href="{% url 'home' %}" class="under-development-button" aria-label="Back to Home Page">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

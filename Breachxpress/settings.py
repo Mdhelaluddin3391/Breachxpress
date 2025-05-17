@@ -14,7 +14,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = 'django-insecure-8_!6rdwxrk&*0fnfh6bh$#mu^aau!n@^77sn=@t5@knrl$38wk'
 DEBUG = False
 """
-ALLOWED_HOSTS = [ 'breachxpress.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [ '.onrender.com','breachxpress-q66m.onrender.com','breachxpress.onrender.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

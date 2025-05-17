@@ -1,9 +1,11 @@
 from pathlib import Path
 from django.contrib.messages import constants as message_constants
+from decouple import config
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-from decouple import config
+
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -12,7 +14,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = 'django-insecure-8_!6rdwxrk&*0fnfh6bh$#mu^aau!n@^77sn=@t5@knrl$38wk'
 DEBUG = False
 """
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
+ALLOWED_HOSTS = [ 'breachxpress.onrender.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Breachxpress.urls'
@@ -57,11 +60,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Breachxpress.wsgi.application'
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+'''
+
+
+DATABASES = {
+    'default': dj_database_url.config(
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -74,7 +87,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'Breach/static']
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'

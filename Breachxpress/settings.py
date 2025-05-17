@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 """
 SECRET_KEY = 'django-insecure-8_!6rdwxrk&*0fnfh6bh$#mu^aau!n@^77sn=@t5@knrl$38wk'

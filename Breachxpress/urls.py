@@ -17,7 +17,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.png'))), 
+   # path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.png'))), 
     
     ]
     

@@ -7,6 +7,25 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
+from django.contrib.auth.models import User
+from django.db.utils import OperationalError
+
+def create_superuser():
+    try:
+        if not User.objects.filter(is_superuser=True).exists():
+            User.objects.create_superuser(
+                username='mdhelal',
+                email='muhammadhelal123',
+                password='helal123'
+            )
+            print("Superuser created successfully")
+    except OperationalError:
+        print("Database not ready, skipping superuser creation")
+
+create_superuser()
+
+
 def get_base_context():
     """Returns base context with site metadata, navigation links, and footer sections."""
     site_metadata = SiteMetadata.objects.first()

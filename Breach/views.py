@@ -4,13 +4,13 @@ from django.contrib import messages
 from .models import HeroSection, HomeContent, SiteMetadata, NavigationLink, FooterSection, Quote, Expose, Tag, AboutPageContent, Contact, SubmittedStory
 from .forms import ContactForm, SubmittedStoryForm
 import logging
-
-logger = logging.getLogger(__name__)
-
-
 from django.contrib.auth.models import User
 from django.db.utils import OperationalError
 
+
+logger = logging.getLogger(__name__)
+
+'''
 def create_superuser():
     try:
         if not User.objects.filter(is_superuser=True).exists():
@@ -24,7 +24,7 @@ def create_superuser():
         print("Database not ready, skipping superuser creation")
 
 create_superuser()
-
+'''
 
 def get_base_context():
     """Returns base context with site metadata, navigation links, and footer sections."""

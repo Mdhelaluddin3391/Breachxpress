@@ -63,39 +63,39 @@ This project supports both **local development** and **production deployment** (
 ###  For Local Development:
 
 1. **Comment out** these production-specific lines in `settings.py`:
-
 ```python
 from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=True, cast=bool)
-
+```
 
 #Uncomment the local settings
+```python
 SECRET_KEY = 'your-secret-key'
 DEBUG = True
-
+```
 ##Use SQLite for local testing (already configured by default):
-
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+```
 ##Comment out PostgreSQL deployment code:
-
+```python
 # DATABASES = {
 #     'default': dj_database_url.config(
 #         conn_max_age=600,
 #         ssl_require=True
 #     )
 # }
-
+```
 ##Disable WhiteNoise if you face static file issues during development:
-
+```python
 # 'whitenoise.middleware.WhiteNoiseMiddleware',
-
+```
 ##Setup Instructions
 Clone the repository:
 #git clone https://github.com/Mdhelaluddin3391/Breachxpress.git

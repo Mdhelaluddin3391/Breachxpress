@@ -98,20 +98,21 @@ DATABASES = {
 ```
 ##Setup Instructions
 Clone the repository:
+```python
 #git clone https://github.com/Mdhelaluddin3391/Breachxpress.git
 #cd Breachxpress
 #pip install -r requirements.txt
 #python manage.py makemigrations
 #python manage.py migrate
 #python manage.py runserver
-
+```
 Feel free to reach out if you want to contribute, face any issues, or need guidance:
 Md. Helal Uddin
 Email: mdhelaluddin3391@gmail.com
 GitHub: @Mdhelaluddin3391
 
 
-##Acknowledgments
+###Acknowledgments
 CS50x — for the opportunity and knowledge.
 Django documentation and community.
 Open-source contributors who built CKEditor and other tools.

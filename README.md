@@ -52,7 +52,7 @@ etc.
 
 ##  How to Submit a Story
 
-Go to the [Submit Story](https://breachxpress.onrender.com/submit/) page and use the editor to write your content. Click **Submit** — that’s it. No login, no identity exposure.
+Go to the [Submit Story](https://breachxpress-8jag.onrender.com/submit-story/) page and use the editor to write your content. Click **Submit** — that’s it. No login, no identity exposure.
 
 ---
 

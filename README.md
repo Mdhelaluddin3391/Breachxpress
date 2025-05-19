@@ -1,77 +1,126 @@
 # BreachXpress
 
-## Description
-BreachXpress is a web application developed as the final project for CS50’s Introduction to Computer Science. It serves as a platform for individuals to anonymously expose corruption and injustices, promoting transparency and justice for humanity. Users can submit stories of corruption or misconduct through the "Submit Story" page without revealing their identity, ensuring their safety and privacy. To maintain anonymity, the application avoids user authentication, cookies, or any form of tracking. Submitted stories are stored on the server and published for public viewing. A community section, currently under development, will allow users to collaborate and discuss submissions.
+**BreachXpress** is a web application built using Django as a final project for [CS50x](https://cs50.harvard.edu/x). It is a platform that empowers users to **anonymously expose corruption** and share stories for the sake of **justice** and **humanity** without fear of identity disclosure.
 
-## Features
-- Anonymous story submission through the "Submit Story" page
-- Rich text editing for submissions using CKEditor
-- Server-side storage and publication of submitted stories
-- Community section (in development) for user collaboration and discussion
-- No login, cookies, or tracking to prioritize user anonymity
+---
 
-## Technologies Used
-- **Backend**: Python, Django
-- **Database**: SQLite (with plans to upgrade to PostgreSQL)
-- **Frontend**: HTML, CSS, JavaScript
-- **Editor**: CKEditor for rich text input
-- **Version Control**: Git, GitHub
+## Motivation
 
-## Installation and Setup
-To run BreachXpress locally, follow these steps:
+In many parts of the world, people hesitate to report corruption due to fear of retaliation. BreachXpress was developed to solve this problem by giving people a **safe, anonymous platform** to submit their stories without any login or tracking system.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Mdhelaluddin3391/Breachxpress.git
+---
 
+##  Live Demo
 
+ [https://breachxpress.onrender.com](https://breachxpress.onrender.com)
 
-Navigate to the project directory:
-   cd Breachxpress
+---
 
-Install dependencies:
-   pip install -r requirements.txt
+##  Features
 
-Apply database migrations:
-   python manage.py migrate
+-  Submit stories anonymously using a rich text editor (CKEditor).
+-  No login system or cookies — your identity is never stored.
+-  Admin can review and publish submitted stories to the public.
+-  Community section (under development) where users will collaborate and support each other.
+-  Mobile-friendly and responsive design.
+-  Built-in protection for large file uploads.
 
-Run the development server:
-   python manage.py runserver
+---
 
-Open http://127.0.0.1:8000 in your browser to access the application.
+## Project Structure
+
+BreachXpress/
+├── Breach/ # Main Django app (views, URLs,
+│      └── models, templates, static etc.
+├── manage.py # Django entry point
+├── db.sqlite3 # Default local database
+├── requirements.txt # Python dependencies
+etc.
 
 
-Project Structure:
-Breachxpress/: Main project directory
-   Breach/: Django app containing core logic (views, URLs, models, templates, etc.)
-   manage.py: Django management script
-      templates/: HTML templates for rendering pages
-      static/: CSS, JavaScript, and other static assets
-   db.sqlite3: SQLite database file
-   requirements.txt: List of Python dependencies
+---
 
-usage:
-Visit the "Submit Story" page to compose and submit a story using the CKEditor interface.
-Submitted stories are saved on the server and made publicly accessible.
-The community section (under development) will allow users to engage with others and discuss published stories.
+##  Technologies Used
+
+- **Django**
+- **HTML / CSS / JavaScript**
+- **SQLite** (will be upgraded to PostgreSQL later)
+- **CKEditor** for story submission
+- **Render** for deployment
+
+---
+
+##  How to Submit a Story
+
+Go to the [Submit Story](https://breachxpress.onrender.com/submit/) page and use the editor to write your content. Click **Submit** — that’s it. No login, no identity exposure.
+
+---
+
+##  Settings Configuration Notes
+
+This project supports both **local development** and **production deployment** (e.g., Render). Follow these steps accordingly.
+
+###  For Local Development:
+
+1. **Comment out** these production-specific lines in `settings.py`:
+
+```python
+from decouple import config
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 
-Challenges Faced:
-Integrating CKEditor for rich text editing was initially challenging but resolved by following the official CKEditor documentation.
-Ensuring complete user anonymity while maintaining functionality required careful design, achieved by eliminating authentication and tracking mechanisms.
-Minor issues during development, such as configuring Django models, were addressed using Google searches and Django’s official documentation.
+#Uncomment the local settings
+SECRET_KEY = 'your-secret-key'
+DEBUG = True
 
-Future Improvements:
-Upgrade the database to PostgreSQL for better performance and scalability
-Complete the community section to enable user collaboration and discussion
-Implement moderation tools to review stories before publication
-Enhance the user interface with advanced CSS and JavaScript features
-Add multilingual support to make the platform accessible to a global audience
+##Use SQLite for local testing (already configured by default):
 
-Credits:
-CS50 for providing an outstanding learning experience
-Django documentation for guiding backend development
-CKEditor for enabling rich text editing
-GitHub for hosting the project repository
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+##Comment out PostgreSQL deployment code:
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         conn_max_age=600,
+#         ssl_require=True
+#     )
+# }
+
+##Disable WhiteNoise if you face static file issues during development:
+
+# 'whitenoise.middleware.WhiteNoiseMiddleware',
+
+##Setup Instructions
+Clone the repository:
+#git clone https://github.com/Mdhelaluddin3391/Breachxpress.git
+#cd Breachxpress
+#pip install -r requirements.txt
+#python manage.py makemigrations
+#python manage.py migrate
+#python manage.py runserver
+
+Feel free to reach out if you want to contribute, face any issues, or need guidance:
+Md. Helal Uddin
+Email: mdhelaluddin3391@gmail.com
+GitHub: @Mdhelaluddin3391
+
+
+##Acknowledgments
+CS50x — for the opportunity and knowledge.
+Django documentation and community.
+Open-source contributors who built CKEditor and other tools.
+
+
+
+
+
+
+
 
 

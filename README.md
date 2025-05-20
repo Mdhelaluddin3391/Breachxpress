@@ -1,7 +1,7 @@
 # BreachXpress
 **BreachXpress** is a web application developed as the final project for CS50x 2025, built using Django. It provides a secure, anonymous platform for users to expose corruption and share stories in the pursuit of justice and transparency, without fear of identity disclosure.
 
-**Author**: Md. Helal Uddin, Dhaka, Bangladesh  
+**Author**: Md. Helal Uddin, Dharmanagar, INDIA  
 **Video Demo**: [https://youtube.com/watch?v=VjofDCMohfQ](https://youtube.com/watch?v=VjofDCMohfQ)  
 **Live Demo**: [https://breachxpress-8jag.onrender.com](https://breachxpress-8jag.onrender.com)
 

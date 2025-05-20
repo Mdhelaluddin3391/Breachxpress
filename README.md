@@ -64,13 +64,13 @@ To run BreachXpress locally, ensure you have **Python 3.8+**, **Git**, and a vir
    pip install -r requirements.txt
 ```
 
-###Apply database migrations:
+### Apply database migrations:
 ```python
    python manage.py makemigrations
    python manage.py migrate
 ```
 
-###Start the development server:
+### Start the development server:
 ```
    python manage.py runserver
 ```
@@ -79,8 +79,8 @@ Open http://localhost:8000 in your browse
 
 If static files (e.g., CSS, JavaScript) don’t load, ensure DEBUG = True in settings.py and run:
 
-###Settings Configuration
-##Local Development
+### Settings Configuration
+## Local Development
 ```python
    SECRET_KEY = 'your-secret-key'
    DEBUG = True
@@ -110,7 +110,7 @@ For contributions, issues, or questions,
 contact:Email: mdhelaluddin3391@gmail.com
 GitHub: Mdhelaluddin3391
 
-###Acknowledgments
+### Acknowledgments
 CS50x: For providing an incredible learning experience and inspiring this project.
 Django Community: For comprehensive documentation and support.
 CKEditor: For the open-source rich text editor.

@@ -3,6 +3,10 @@
 **BreachXpress** is a web application built using Django as a final project for [CS50x](https://cs50.harvard.edu/x). It is a platform that empowers users to **anonymously expose corruption** and share stories for the sake of **justice** and **humanity** without fear of identity disclosure.
 
 ---
+___
+### Video url
+https://youtube.com/shorts/VjofDCMohfQ?si=b1k6RtlboEgmKBjZ
+___
 
 ## Motivation
 
@@ -12,7 +16,7 @@ In many parts of the world, people hesitate to report corruption due to fear of 
 
 ##  Live Demo
 
- [https://breachxpress.onrender.com](https://breachxpress.onrender.com)
+ [https://breachxpress-8jag.onrender.com](https://breachxpress-8jag.onrender.com)
 
 ---
 

@@ -61,22 +61,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Breachxpress.wsgi.application'
 
 
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        conn_max_age=600,
+        ssl_require=True,
+        default='postgresql://data_z3dk_user:f2IvS0dri0ooVNXY3wH9OohEwuwKymJ7@dpg-d0mpie63jp1c738ihqeg-a.oregon-postgres.render.com/data_z3dk'
+    )
+}
+
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-'''
-DATABASES = {
-    'default': dj_database_url.config(
-        conn_max_age=600,
-        ssl_require=True
-    )
-}
-'''
-
+"""
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
